@@ -4,7 +4,7 @@ This is a front end Burger Logger application built with Bootstrap, MySQL, Node,
 # How to use
 From the BRGR home page, either click the 'Enjoy!' button next to the delicous burger you would like to devour, or enter your own custom burger creation in the input field found below the pre-made offerings.  Each burger you enjoy will be moved from BURGER, to DEVOURED, allowing you to keep track of which burgers you have tried.
 
-[![alt text](./app/public/assets/images/Burger-gif.gif "BRGR App")](https://TBD.herokuapp.com/)
+[![alt text](./public/assets/images/Burger-gif.gif "BRGR App")](https://TBD.herokuapp.com/)
 
 
 ### [Try the App!](https://TBD.herokuapp.com/)
