@@ -1,4 +1,4 @@
-//setup the code to connect Node to MySQ
+// Set up MySQL connection.
 let mysql = require("mysql");
 
 let connection = mysql.createConnection({
@@ -9,6 +9,7 @@ let connection = mysql.createConnection({
     database: "burgers_db"
 });
 
+// Make connection.
 connection.connect(function(err) {
     if (err) {
         console.log("Error connecting; " + err.stack);
@@ -18,5 +19,5 @@ connection.connect(function(err) {
     }
 });
 
-//Export the connection
+// Export connection for our ORM to use.
 module.exports = connection;

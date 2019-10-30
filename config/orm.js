@@ -1,5 +1,7 @@
+// Import MySQL connection.
 let connection = require("./connection.js");
 
+// Helper function for SQL syntax.
 function printQuestionMarks(num) {
     let arr = [];
 
@@ -10,6 +12,7 @@ function printQuestionMarks(num) {
     return arr.toString();
 }
 
+// Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
     let arr = [];
 
@@ -29,6 +32,7 @@ function objToSql(ob) {
     return arr.toString();
 }
 
+// Object for all our SQL statement functions.
 let orm = {
     selectAll: function(tableInput, rs) {
         let queryString = "SELECT * FROM " + tableInput + ";";
@@ -59,6 +63,7 @@ let orm = {
             rs(result);
         });
     },
+
     updateOne: function(table, objColVals, condition, rs) {
         var queryString = "UPDATE " + table;
 
@@ -77,4 +82,5 @@ let orm = {
     },
 }
 
+// Export the orm object for the model (burger.js).
 module.exports = orm;
