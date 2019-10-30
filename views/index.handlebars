@@ -5,15 +5,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6" class=" task1">
-            <h2>Burgers</h2>
-            <ol id="enjoy">
+        <div class="col-6" class=" task">
+            <hr />
+            <h2>BURGERS</h2>
+            <hr />
+            <ol>
                 {{#each burgers}}
                 {{#unless devoured}}
                 <li>
                     {{burger_name}}
 
-                    <button class="change-devoured" data-id="{{id}}" data-newdevoured=true>
+                    <button class="change-devoured btn btn-sm btn-dark active" data-id="{{id}}" data-newdevoured=true>
                         {{#if devoured}}Test{{else}}Enjoy!{{/if}}
                     </button>
                 </li>
@@ -21,9 +23,11 @@
                 {{/each}}
             </ol>
         </div>
-        <div class="col-6" class="task2">
-            <h2>Devoured</h2>
-            <ol id="devoured">
+        <div class="col-6" class="task">
+            <hr />
+            <h2>DEVOURED</h2>
+            <hr />
+            <ol>
                 {{#each burgers}}
                 {{#if devoured}}
                 <li>
@@ -36,21 +40,22 @@
     </div>
     <div class="row">
         <div class="col-12 text-center enter_section">
-            <h2>Create Your Own Delicious Burger!</h2>
+            <h2>CREATE YOUR OWN TASTY BURGER!</h2>
             <form class="burger-form">
 
                 <div class="form-group">
-                    <label for="brg">Burger Name:</label>
+                    <label for="brg">BURGER NAME:</label>
                     <input type="text" id="brg" name="burger_name">
                 </div>
 
                 <div class="form-group" id="radio">
-                    <label for="devoured">Availability:</label><br>
+                    <label for="devoured">AVAILABILITY:</label><br>
                     <input type="radio" name="devoured" value="1" checked> Devoured<br>
                     <input type="radio" name="devoured" value="0"> Freshly Made
                 </div>
 
-                <button class="burger-form" type="submit">Add Burger</button>
+                <button class="btn btn-md btn-dark active" aria-pressed="true" id="brgBtn" type="submit">Add
+                    Burger</button>
             </form>
         </div>
     </div>

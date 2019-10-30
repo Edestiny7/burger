@@ -7,21 +7,20 @@ body {
     background: url("../images/burger-unsplash.jpg") no-repeat center center fixed;
     /* Center and scale the image nicely */
     background-size: cover;
+    letter-spacing: .02em;
+    line-height: 1.6em;
 }
 
 .container {
     background-color: rgba(253, 240, 182, 0.795);
     margin-top: 50px;
     margin-bottom: 50px;
+    font-family: 'Inconsolata', monospace;
 }
 
 #top-bar {
     text-align: center;
     margin-top: 25px;
-}
-
-li {
-    padding-top: 10px;
 }
 
 h1 {
@@ -37,22 +36,44 @@ h2 {
     margin-left: 45%;
 }
 
+#brg {
+    padding-left: 5px;
+}
+
+input {
+    background-color: rgba(253, 247, 221, 0.671);
+    padding: 3px;
+    font-family: 'Inconsolata', monospace;
+}
+
 #brgBtn {
     margin-bottom: 20px;
 }
 
-#devoured {
-    margin-left: 10%;
+.task {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-#enjoy {
-    margin-left: 10%;
-}
-
-
-/* button {
+button {
     margin: 5px;
     background-color: rgba(5, 5, 5, 0.87);
     border-color: rgb(5, 5, 5);
     color: white;
-} */
+}
+
+label {
+    font-size: 25px;
+}
+
+hr {
+    height: 3px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    background-color: black;
+}
