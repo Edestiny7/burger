@@ -1,7 +1,23 @@
-let orm = require("orm.js");
-//create the code that will call the ORM functions using burger
-// specific input for the ORM.
+//calls ORM functions
+let orm = require("../config/orm.js");
 
+let burger = {
+    selectAll: function(rs) {
+        orm.selectAll("burgers", function(res) {
+            rs(res);
+        });
+    },
+    // The Variables cols and vals are arrays.
+    insertOne: function(cols, vals, rs) {
+        orm.insertOne("burgers", cols, vals, function(res) {
+            rs(res);
+        });
+    },
+    updateOne: function(objColVals, condition, rs) {
+        orm.updateOne("burgers", objColVals, condition, function(res) {
+            rs(res);
+        });
+    },
+};
 
-
-module.exports("orm.js");
+module.exports = burger;

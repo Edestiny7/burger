@@ -1,9 +1,80 @@
-let orm = require("orm.js");
+let connection = require("./connection.js");
 
-/* create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
+function printQuestionMarks(num) {
+    let arr = [];
 
-     * `selectAll()`
-     * `insertOne()`
-     * `updateOne()` */
+    for (let i = 0; i < num; i++) {
+        arr.push("?");
+    }
 
-module.exports("orm.js");
+    return arr.toString();
+}
+
+function objToSql(ob) {
+    let arr = [];
+
+    // loop through the keys and push the key/value as a string int arr
+    for (let key in ob) {
+        let value = ob[key];
+        // check to skip hidden properties
+        if (Object.hasOwnProperty.call(ob, key)) {
+            // add quotations if spaces (Portobello Cheeseburger  => 'Portobello Cheeseburger')
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            arr.push(key + "=" + value);
+        }
+    }
+    // translate array of strings to a single comma-separated string
+    return arr.toString();
+}
+
+let orm = {
+    selectAll: function(tableInput, rs) {
+        let queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw (err);
+            }
+            rs(result);
+        });
+    },
+
+    insertOne: function(table, cols, vals, rs) {
+        let queryString = "INSERT INTO " + table;
+
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
+
+        console.log(queryString);
+
+        connection.query(queryString, vals, function(err, result) {
+            if (err) {
+                throw err;
+            }
+            rs(result);
+        });
+    },
+    updateOne: function(table, objColVals, condition, rs) {
+        var queryString = "UPDATE " + table;
+
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            }
+            rs(result);
+        });
+    },
+}
+
+module.exports = orm;
